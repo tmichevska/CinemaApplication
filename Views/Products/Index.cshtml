@@ -1,0 +1,41 @@
+﻿@model IEnumerable<CinemaApp.Web.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@{
+    int a = 5;
+    List<int> myList = new List<int>();
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<h2>Products</h2>
+<div class="row">
+    @foreach (var item in Model)
+    {
+
+        <div class="col-md-3">
+            <div class="card" style="width:25rem; height:30rem;">
+                <img class="card-img-top" src="@item.Image" style="height:60%; max-width:90%" />
+                <div class="card-body">
+                    <h3>@item.Name</h3>
+                    <p>@item.Description</p>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.ProductId">
+                        Edit
+                    </a>
+                    <a class="btn btn-default" href="Products/AddToShoppingCart?productId=@item.ProductId">
+                        Add to cart
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
